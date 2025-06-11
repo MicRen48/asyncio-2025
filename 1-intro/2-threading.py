@@ -6,7 +6,7 @@ import threading
 from datetime import datetime
 
 def make_burger(student_id):
-    start_time = time.time()  # เริ่มจับเวลาแยกของแต่ละคน
+    start_time = time.time()  
     
     print(f"[{datetime.now().strftime('%H:%M:%S')}] เริ่มทำเบอร์เกอร์ให้นักเรียนคนที่ {student_id}")
     
