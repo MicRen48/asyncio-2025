@@ -7,6 +7,8 @@ from datetime import datetime
 
 def make_burger(student_id):
     start_time = time.time()
+    start_str = datetime.now().strftime('%H:%M:%S')
+    
     print(f"[{datetime.now().strftime('%H:%M:%S')}] เริ่มทำเบอร์เกอร์ให้นักเรียนคนที่ {student_id}")
     
     print(f"[{datetime.now().strftime('%H:%M:%S')}] 1. ทอดเบอร์เกอร์...")
@@ -22,9 +24,11 @@ def make_burger(student_id):
     time.sleep(5)
 
     end_time = time.time()
+    end_str = datetime.now().strftime('%H:%M:%S')
     elapsed = end_time - start_time
 
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] เสร็จแล้ว! เบอร์เกอร์ของนักเรียนคนที่ {student_id} ใช้เวลา {elapsed:.2f} วินาที")
+
+    print(f"[{end_str}](เริ่ม: {start_str} / เสร็จ: {end_str})  เบอร์เกอร์ของนักเรียนคนที่ {student_id} ใช้เวลา {elapsed:.2f} วินาที ")
 
 
 def main():
