@@ -1,5 +1,3 @@
-# file: rocketapp.py
-
 from fastapi import FastAPI, HTTPException
 import asyncio
 import random
@@ -11,19 +9,27 @@ rockets = []
 
 async def launch_rocket(student_id: str):
     """
-    TODO:
-    - จำลองเวลาจรวดด้วย random delay 1-2 วินาที
-    - print log ว่า rocket launched และ reached destination
+    Simulate rocket launch with random delay 1-2 seconds and print logs.
     """
-    pass
+    delay = random.uniform(1, 2)
+    print(f"Rocket launched for student {student_id}")
+    await asyncio.sleep(delay)
+    print(f"Rocket reached destination for student {student_id}")
 
 @app.get("/fire/{student_id}")
 async def fire_rocket(student_id: str):
     """
-    TODO:
-    - ตรวจสอบ student_id ต้องเป็น 10 หลัก
-    - สร้าง background task ยิง rocket
-    - รอ random delay 1-2 วินาที ก่อนส่ง response
-    - return dict {"message": ..., "time_to_target": ...}
+    Validate student_id, create background task to launch rocket, wait random delay, and return response.
     """
-    pass
+    if len(student_id) != 10:
+        raise HTTPException(status_code=400, detail="Student ID must be 10 digits")
+    
+    # Create background task to launch rocket
+    task = asyncio.create_task(launch_rocket(student_id))
+    rockets.append(task)
+    
+    # Wait random delay 1-2 seconds before responding
+    delay = random.uniform(1, 2)
+    await asyncio.sleep(delay)
+    
+    return {"message": f"Rocket fired for student {student_id}", "time_to_target": delay}
