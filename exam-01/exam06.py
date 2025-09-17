@@ -13,6 +13,9 @@ async def main():
     try:
         await asyncio.gather(risky_task(), risky_task())
         
+        
     except Exception as e:
-        print("Caught:", e)
+        print(f"Caught: ",e)
+        
 asyncio.run(main())
+    

@@ -23,8 +23,10 @@ async def worker(name, delay):
 async def main():
     tasks = []
     for i in range(3):
-        tasks.append(asyncio.create_task(worker(f"Task-{i}", i+1)))
-    
+       tasks.append(asyncio.create_task(worker(f"Task-{i}", i+1)))
+        
     print("All tasks scheduled")
+    print("Result:", [t for t in tasks])
+    
 
 asyncio.run(main())
